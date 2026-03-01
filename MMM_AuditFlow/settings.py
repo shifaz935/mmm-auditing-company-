@@ -28,12 +28,15 @@ SECRET_KEY = os.environ.get(
 )
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get("DEBUG", "False") == "True"
+DEBUG = False
 
-ALLOWED_HOSTS = [".railway.app"]
+ALLOWED_HOSTS = [
+    "mmm-auditing-company-production.up.railway.app",
+    ".railway.app",
+]
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://*.railway.app",
+    "https://mmm-auditing-company-production.up.railway.app",
 ]
 
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
