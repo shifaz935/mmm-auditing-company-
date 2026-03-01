@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h3 class="mb-4">Upload Audit Document</h3>
+
+<div class="card shadow-sm">
+    <div class="card-body">
+
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <!-- SELECT CLIENT -->
+            <div class="mb-3">
+                <label class="form-label">Select Client</label>
+                <select name="client" class="form-select" required>
+                    <option value="">-- Select Client --</option>
+                    {% for client in clients %}
+                        <option value="{{ client.id }}">
+                            {{ client.client_name }} - {{ client.company_name }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <!-- DOCUMENT TYPE -->
+            <div class="mb-3">
+                <label class="form-label">Document Type</label>
+                <select name="document_type" class="form-select" required>
+                    <option value="">-- Select Document Type --</option>
+                    <option value="Invoice">Invoice</option>
+                    <option value="Bank Statement">Bank Statement</option>
+                    <option value="Expense File">Expense File</option>
+                    <option value="Audit Report">Final Audit Report</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+
+            <!-- FILE UPLOAD -->
+            <div class="mb-3">
+                <label class="form-label">Upload File</label>
+                <input
+                    type="file"
+                    name="file"
+                    class="form-control"
+                    required
+                >
+            </div>
+
+            <!-- BUTTONS -->
+            <div class="d-flex justify-content-between">
+                <a href="{% url 'documents:document_list' %}" class="btn btn-secondary">
+                    Cancel
+                </a>
+                <button type="submit" class="btn btn-primary">
+                    Upload Document
+                </button>
+            </div>
+
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

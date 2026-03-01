@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h3 class="mb-4">Dashboard</h3>
+
+<div class="row">
+
+    <!-- TOTAL CLIENTS -->
+    <div class="col-md-4">
+        <div class="card shadow-sm mb-4">
+            <div class="card-body text-center">
+                <h5>Total Clients</h5>
+                <h2 class="text-primary">
+                    {{ total_clients }}
+                </h2>
+            </div>
+        </div>
+    </div>
+
+    <!-- PENDING AUDITS -->
+    <div class="col-md-4">
+        <div class="card shadow-sm mb-4">
+            <div class="card-body text-center">
+                <h5>Pending Audits</h5>
+                <h2 class="text-warning">
+                    {{ pending_audits }}
+                </h2>
+            </div>
+        </div>
+    </div>
+
+    <!-- COMPLETED AUDITS -->
+    <div class="col-md-4">
+        <div class="card shadow-sm mb-4">
+            <div class="card-body text-center">
+                <h5>Completed Audits</h5>
+                <h2 class="text-success">
+                    {{ completed_audits }}
+                </h2>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- WELCOME MESSAGE -->
+<div class="card">
+    <div class="card-body">
+        <h5>Welcome to MMM AuditFlow</h5>
+        <p>
+            This dashboard helps Mariam Mohammed Almalek – Accounting & Auditing Office
+            track audit clients, monitor audit progress, and manage documents securely.
+        </p>
+    </div>
+</div>
+
+{% endblock %}

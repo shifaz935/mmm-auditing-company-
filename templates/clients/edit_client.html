@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h3 class="mb-4">Edit Client</h3>
+
+<div class="card shadow-sm">
+    <div class="card-body">
+
+        <form method="post">
+            {% csrf_token %}
+
+            <!-- CLIENT NAME -->
+            <div class="mb-3">
+                <label class="form-label">Client Name</label>
+                <input
+                    type="text"
+                    name="client_name"
+                    class="form-control"
+                    value="{{ client.client_name }}"
+                    required
+                >
+            </div>
+
+            <!-- COMPANY NAME -->
+            <div class="mb-3">
+                <label class="form-label">Company Name</label>
+                <input
+                    type="text"
+                    name="company_name"
+                    class="form-control"
+                    value="{{ client.company_name }}"
+                    required
+                >
+            </div>
+
+            <!-- CONTACT NUMBER -->
+            <div class="mb-3">
+                <label class="form-label">Contact Number</label>
+                <input
+                    type="text"
+                    name="contact_number"
+                    class="form-control"
+                    value="{{ client.contact_number }}"
+                    required
+                >
+            </div>
+
+            <!-- AUDIT TYPE -->
+            <div class="mb-3">
+                <label class="form-label">Audit Type</label>
+                <select name="audit_type" class="form-select" required>
+                    <option value="Accounting" {% if client.audit_type == "Accounting" %}selected{% endif %}>Accounting</option>
+                    <option value="Auditing" {% if client.audit_type == "Auditing" %}selected{% endif %}>Auditing</option>
+                    <option value="Bookkeeping" {% if client.audit_type == "Bookkeeping" %}selected{% endif %}>Bookkeeping</option>
+                    <option value="Tax Consultancy" {% if client.audit_type == "Tax Consultancy" %}selected{% endif %}>Tax Consultancy</option>
+                    <option value="Feasibility Study" {% if client.audit_type == "Feasibility Study" %}selected{% endif %}>Feasibility Study</option>
+                </select>
+            </div>
+
+            <!-- AUDIT YEAR -->
+            <div class="mb-3">
+                <label class="form-label">Audit Year</label>
+                <input
+                    type="number"
+                    name="audit_year"
+                    class="form-control"
+                    value="{{ client.audit_year }}"
+                    required
+                >
+            </div>
+
+            <!-- STATUS -->
+            <div class="mb-3">
+                <label class="form-label">Audit Status</label>
+                <select name="status" class="form-select" required>
+                    <option value="Pending" {% if client.status == "Pending" %}selected{% endif %}>Pending</option>
+                    <option value="In Progress" {% if client.status == "In Progress" %}selected{% endif %}>In Progress</option>
+                    <option value="Completed" {% if client.status == "Completed" %}selected{% endif %}>Completed</option>
+                </select>
+            </div>
+
+            <!-- BUTTONS -->
+            <div class="d-flex justify-content-between">
+                <a href="{% url 'clients:client_list' %}" class="btn btn-secondary">
+                   Cancel
+                </a>
+
+                <button type="submit" class="btn btn-primary">
+                    Update Client
+                </button>
+            </div>
+
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

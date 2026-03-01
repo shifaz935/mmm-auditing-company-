@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h3 class="mb-4">Add New Client</h3>
+
+<div class="card shadow-sm">
+    <div class="card-body">
+
+        <form method="post">
+            {% csrf_token %}
+
+            <!-- CLIENT NAME -->
+            <div class="mb-3">
+                <label class="form-label">Client Name</label>
+                <input
+                    type="text"
+                    name="client_name"
+                    class="form-control"
+                    placeholder="Enter client name"
+                    required
+                >
+            </div>
+
+            <!-- COMPANY NAME -->
+            <div class="mb-3">
+                <label class="form-label">Company Name</label>
+                <input
+                    type="text"
+                    name="company_name"
+                    class="form-control"
+                    placeholder="Enter company name"
+                    required
+                >
+            </div>
+
+            <!-- CONTACT NUMBER -->
+            <div class="mb-3">
+                <label class="form-label">Contact Number</label>
+                <input
+                    type="text"
+                    name="contact_number"
+                    class="form-control"
+                    placeholder="Enter contact number"
+                    required
+                >
+            </div>
+
+            <!-- AUDIT TYPE -->
+            <div class="mb-3">
+                <label class="form-label">Audit Type</label>
+                <select name="audit_type" class="form-select" required>
+                    <option value="">-- Select Audit Type --</option>
+                    <option value="Accounting">Accounting</option>
+                    <option value="Auditing">Auditing</option>
+                    <option value="Bookkeeping">Bookkeeping</option>
+                    <option value="Tax Consultancy">Tax Consultancy</option>
+                    <option value="Feasibility Study">Feasibility Study</option>
+                </select>
+            </div>
+
+            <!-- AUDIT YEAR -->
+            <div class="mb-3">
+                <label class="form-label">Audit Year</label>
+                <input
+                    type="number"
+                    name="audit_year"
+                    class="form-control"
+                    placeholder="2024"
+                    required
+                >
+            </div>
+
+            <!-- STATUS -->
+            <div class="mb-3">
+                <label class="form-label">Audit Status</label>
+                <select name="status" class="form-select" required>
+                    <option value="Pending">Pending</option>
+                    <option value="In Progress">In Progress</option>
+                    <option value="Completed">Completed</option>
+                </select>
+            </div>
+
+            <!-- BUTTONS -->
+            <div class="d-flex justify-content-between">
+                <a href="{% url 'clients:client_list' %}" class="btn btn-secondary">
+                    Cancel
+                </a>
+
+                <button type="submit" class="btn btn-primary">
+                    Save Client
+                </button>
+            </div>
+
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}
