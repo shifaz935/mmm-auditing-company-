@@ -30,16 +30,13 @@ SECRET_KEY = os.environ.get(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("DEBUG", "False") == "True"
 
-RAILWAY_STATIC_URL = os.environ.get("RAILWAY_STATIC_URL")
+ALLOWED_HOSTS = [".railway.app"]
 
-ALLOWED_HOSTS = [
-    ".railway.app",
+CSRF_TRUSTED_ORIGINS = [
+    "https://mmm-auditing-company-production.up.railway.app",
 ]
 
-CSRF_TRUSTED_ORIGINS = []
-
-if RAILWAY_STATIC_URL:
-    CSRF_TRUSTED_ORIGINS.append(f"https://{RAILWAY_STATIC_URL}")
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 
 
 # Application definition
