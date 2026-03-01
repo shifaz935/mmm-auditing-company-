@@ -33,7 +33,7 @@ DEBUG = os.environ.get("DEBUG", "False") == "True"
 ALLOWED_HOSTS = [".railway.app"]
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://mmm-auditing-company-production.up.railway.app",
+    "https://*.railway.app",
 ]
 
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
